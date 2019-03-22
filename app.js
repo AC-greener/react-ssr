@@ -11,10 +11,10 @@ app.get('/', function(req, res) {
   res.send(`
     <html>
       <head>
-      </head>
+        </head>
       <body>
-        ${App}
-      <script src='/index.js'></script>
+        <div id='app'>${App}</div>
+        <script src='/index.js'></script>
       </body>
     </html>
   `)

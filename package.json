@@ -4,9 +4,9 @@
   "description": "学习react服务器端渲染",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./build/bundle.js",
-    "build": "webpack --config webpack.server.js"
+    "dev": "npm-run-all --parallel dev:**",
+    "dev:start": "nodemon --watch build --exec node \"./build/bundle.js\"",
+    "dev:build": "webpack --config webpack.server.js --watch"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "babel-plugin-lodash": "^3.3.2",
     "babel-plugin-react-transform": "^3.0.0",
     "express": "^4.16.4",
+    "nodemon": "^1.18.10",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "webpack": "^4.29.6",

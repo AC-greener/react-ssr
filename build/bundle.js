@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const express = __webpack_require__(/*! express */ \"express\");\n\nconst app = express();\n\nconst Home = __webpack_require__(/*! ./src/container/Home/index */ \"./src/container/Home/index.js\");\n\nconst React = __webpack_require__(/*! react */ \"react\");\n\nconst ReactDOM = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nconst reactTostring = ReactDOM.renderToString;\napp.get('/', function (req, res) {\n  res.send(reactTostring(React.createElement(Home, null)));\n});\napp.listen(3000, function () {\n  console.log('server started 3000');\n});\n\n//# sourceURL=webpack:///./app.js?");
+eval("const express = __webpack_require__(/*! express */ \"express\");\n\nconst app = express();\n\nconst Home = __webpack_require__(/*! ./src/container/Home/index */ \"./src/container/Home/index.js\");\n\nconst React = __webpack_require__(/*! react */ \"react\");\n\nconst ReactDOM = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nconst App = ReactDOM.renderToString(React.createElement(Home, null));\napp.use(express.static('public'));\napp.get('/', function (req, res) {\n  res.send(`\n    <html>\n      <head>\n      </head>\n      <body>\n        ${App}\n      <script src='/index.js'></script>\n      </body>\n    </html>\n  `);\n});\napp.listen(3000, function () {\n  console.log('server started 3000');\n});\n\n//# sourceURL=webpack:///./app.js?");
 
 /***/ }),
 
@@ -104,7 +104,7 @@ eval("const express = __webpack_require__(/*! express */ \"express\");\n\nconst 
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const React = __webpack_require__(/*! react */ \"react\");\n\nfunction Home() {\n  return React.createElement(\"h1\", null, \"hello ssr\");\n}\n\nmodule.exports = Home;\n\n//# sourceURL=webpack:///./src/container/Home/index.js?");
+eval("const React = __webpack_require__(/*! react */ \"react\");\n\nfunction Home() {\n  return React.createElement(\"h1\", null, \"hello ssr TX ALI\");\n}\n\nmodule.exports = Home;\n\n//# sourceURL=webpack:///./src/container/Home/index.js?");
 
 /***/ }),
 

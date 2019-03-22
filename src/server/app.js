@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const Home = require('./src/container/Home/index')
+import Home from '../container/Home/index'
 const React = require('react')
 const ReactDOM = require('react-dom/server')
 const App = ReactDOM.renderToString(<Home />)

@@ -6,9 +6,7 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_moudules/,
         options: {
-          presets: [
-            '@babel/react',
-          ]
+          "presets": ["@babel/preset-env", "@babel/preset-react"]
         }
       }
     ]

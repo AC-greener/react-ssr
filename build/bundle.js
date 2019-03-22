@@ -81,30 +81,32 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./app.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/server/app.js");
 /******/ })
 /************************************************************************/
 /******/ ({
-
-/***/ "./app.js":
-/*!****************!*\
-  !*** ./app.js ***!
-  \****************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("const express = __webpack_require__(/*! express */ \"express\");\n\nconst app = express();\n\nconst Home = __webpack_require__(/*! ./src/container/Home/index */ \"./src/container/Home/index.js\");\n\nconst React = __webpack_require__(/*! react */ \"react\");\n\nconst ReactDOM = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nconst App = ReactDOM.renderToString(React.createElement(Home, null));\napp.use(express.static('public'));\napp.get('/', function (req, res) {\n  res.send(`\n    <html>\n      <head>\n        </head>\n      <body>\n        <div id='app'>${App}</div>\n        <script src='/index.js'></script>\n      </body>\n    </html>\n  `);\n});\napp.listen(3000, function () {\n  console.log('server started 3000');\n});\n\n//# sourceURL=webpack:///./app.js?");
-
-/***/ }),
 
 /***/ "./src/container/Home/index.js":
 /*!*************************************!*\
   !*** ./src/container/Home/index.js ***!
   \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("const React = __webpack_require__(/*! react */ \"react\");\n\nfunction Home() {\n  return React.createElement(\"h1\", {\n    onClick: () => {\n      alert(1);\n    }\n  }, \"hello ssr TX ALI\");\n}\n\nmodule.exports = Home;\n\n//# sourceURL=webpack:///./src/container/Home/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nvar React = __webpack_require__(/*! react */ \"react\"); // import React from 'react'\n\n\nfunction Home() {\n  return React.createElement(\"h1\", {\n    onClick: function onClick() {\n      alert(1);\n    }\n  }, \"hello ssr TX ALI\");\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Home);\n\n//# sourceURL=webpack:///./src/container/Home/index.js?");
+
+/***/ }),
+
+/***/ "./src/server/app.js":
+/*!***************************!*\
+  !*** ./src/server/app.js ***!
+  \***************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _container_Home_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../container/Home/index */ \"./src/container/Home/index.js\");\nvar express = __webpack_require__(/*! express */ \"express\");\n\nvar app = express();\n\n\nvar React = __webpack_require__(/*! react */ \"react\");\n\nvar ReactDOM = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nvar App = ReactDOM.renderToString(React.createElement(_container_Home_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"], null));\napp.use(express.static('public'));\napp.get('/', function (req, res) {\n  res.send(\"\\n    <html>\\n      <head>\\n        </head>\\n      <body>\\n        <div id='app'>\".concat(App, \"</div>\\n        <script src='/index.js'></script>\\n      </body>\\n    </html>\\n  \"));\n});\napp.listen(3000, function () {\n  console.log('server started 3000');\n});\n\n//# sourceURL=webpack:///./src/server/app.js?");
 
 /***/ }),
 

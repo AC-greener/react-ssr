@@ -1,11 +1,25 @@
 import React from 'react'
-import Header from '../../components/Header'
-function Home() {
+import { connect } from 'react-redux'
+function Home(props) {
   return (
     <div>
-      home
+      我是 home组件 我的名字是 {props.name}
     </div>
   )
 }
 
-export default Home
+const mapStateToProps = (state) => {
+  return {
+    name: state.name
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dispatch1: () => {
+      dispatch(actionCreator)
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

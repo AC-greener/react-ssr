@@ -1,8 +1,10 @@
-const React = require('react')
-// import React from 'react'
+import React from 'react'
+import Header from '../../components/Header'
 function Home() {
   return (
-    <h1 onClick={() => {alert(1)}}>hello ssr TX ALI</h1>
+    <div>
+      home
+    </div>
   )
 }
 

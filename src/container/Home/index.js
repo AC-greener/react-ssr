@@ -6,6 +6,13 @@ class Home extends React.Component {
   return (
     <div>
       我是 home组件 我的名字是 {this.props.name}
+      { this.props.homeList ?
+        this.props.homeList.map(item => {
+          return (
+            <div key={item.id}>{item.id}</div>
+          )
+        }) : ''
+      }
     </div>
   )
  }
@@ -15,20 +22,24 @@ class Home extends React.Component {
 
  
 }
-Home.loadData = function() {
-  
+Home.loadData = function(store) {
+  return store.dispatch(getHomeList())  //返回一个promise
 }
 const getHomeList = ()=>{
-  return () => {
-    axios.get('/api.js')
+  return (dispatch) => {
+    return axios.get('https://api.myjson.com/bins/1anz26')
       .then(res => {
-        console.log(res)
+        console.log(res.data.data)
+        dispatch({type: 'getDataList', payload: res.data.data})
+      }).catch(err => {
+        console.log('你好', err)
       })
   }
 }
 const mapStateToProps = (state) => {
   return {
-    name: state.name
+    name: state.name,
+    homeList: state.homelist
   }
 }
 

@@ -5,7 +5,7 @@ import { render } from './utils'
 app.use(express.static('public'))
 
 app.get('*', function(req, res) {
-  res.send(render(req))
+  render(req, res)
 })
 
 app.listen(3000, function() {

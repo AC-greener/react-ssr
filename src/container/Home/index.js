@@ -5,7 +5,7 @@ class Home extends React.Component {
  render() {
   return (
     <div>
-      我是 home组件 我的名字是 {this.props.name}
+      我是 home组件 我的名字是 
       { this.props.homeList ?
         this.props.homeList.map(item => {
           return (
@@ -29,10 +29,9 @@ const getHomeList = ()=>{
   return (dispatch) => {
     return axios.get('https://api.myjson.com/bins/1anz26')
       .then(res => {
-        console.log(res.data.data)
         dispatch({type: 'getDataList', payload: res.data.data})
       }).catch(err => {
-        console.log('你好', err)
+        console.log('请求数据失败！', err)
       })
   }
 }

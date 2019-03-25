@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+import proxy from 'express-http-proxy'
 import { getStore } from '../store/index'
 import { matchRoutes } from 'react-router-config'
 import Routes from '../Routes'
@@ -7,11 +8,19 @@ import Routes from '../Routes'
 import { render } from './utils'
 app.use(express.static('public'))
 
+app.use('/api', proxy('https://api.myjson.com', {
+    proxyReqPathResolver: function(req) {
+      console.log(req.path)
+      return req.path
+    }
+  })
+);
+
 app.get('*', function(req, res) {
-  
+
   const store = getStore()
-  //根据路由的路径，向store里面加数据
-  //让matchRoutes里面所有的组件执行loadData方法
+  // 根据路由的路径，向store里面加数据
+  // 让matchRoutes里面所有的组件执行loadData方法
   const matchedRoutes = matchRoutes(Routes, req.path)
   const promise = []
   matchedRoutes.forEach(item => {

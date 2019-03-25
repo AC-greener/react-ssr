@@ -23,11 +23,18 @@ class Home extends React.Component {
  
 }
 Home.loadData = function(store) {
-  return store.dispatch(getHomeList())  //返回一个promise
+  return store.dispatch(getHomeList(true))  //返回一个promise
 }
-const getHomeList = ()=>{
+// https://api.myjson.com/bins/1anz26
+const getHomeList = (server)=>{
+  var url
+  if(server) {
+    url =  'https://api.myjson.com/bins/1anz26'
+  } else {
+    url = '/api/bins/1anz26'
+  }
   return (dispatch) => {
-    return axios.get('https://api.myjson.com/bins/1anz26')
+    return axios.get(url)
       .then(res => {
         dispatch({type: 'getDataList', payload: res.data.data})
       }).catch(err => {
@@ -45,7 +52,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getHomeList: () => {
-      dispatch(getHomeList())
+      dispatch(getHomeList(false))
     }
   }
 }

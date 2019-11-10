@@ -2,13 +2,21 @@ import React from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import Header from '../../components/Header'
-import './style.css'
+import styles from './style.css'
 class Home extends React.Component {
+  componentWillMount() {
+    if(styles) {
+      this.props.staticContext = styles._getCss()
+      console.log(styles._getCss())
+    }
+  }
  render() {
   return (
     <div>
-      <Header />
-      我是 home组件 我的名字是 
+      <Header/>
+      <div  className={styles.test} >
+        我是 home组件 我的名字是 
+      </div>
       { this.props.homeList ?
         this.props.homeList.map(item => {
           return (
